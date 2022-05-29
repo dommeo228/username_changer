@@ -1,0 +1,2 @@
+Pyrogram==2.0.26
+python-dotenv==0.20.0
