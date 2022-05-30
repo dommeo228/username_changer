@@ -5,7 +5,7 @@ import string
 import pytz
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from loguru import logger
-from pyrogram import Client
+from pyrogram import Client, idle
 from pyrogram.errors.exceptions.bad_request_400 import UsernameOccupied
 
 from config import API_ID, API_HASH
@@ -40,8 +40,7 @@ async def main():
     scheduler.add_job(change_username, "cron", hour='0', minute='0', second='0')  # Add a job to change username at midnight
     scheduler.start()  # Start the scheduler
 
-    while True:  # A loop to keep the program running
-        await asyncio.sleep(1)
+    await idle()  # Idle the client
 
 
 if __name__ == '__main__':  # If this file is run directly, run the main function
